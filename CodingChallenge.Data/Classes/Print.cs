@@ -30,7 +30,6 @@ namespace CodingChallenge.Data.Classes
         #endregion
 
 
-
         public static string PrintMain(List<FormaGeometrica> formas, Idioma idioma)
         {
             var sb = new StringBuilder();
@@ -68,7 +67,7 @@ namespace CodingChallenge.Data.Classes
 
         private static string ImprimirErrorIdioma(Idioma idioma)
         {
-            if (idioma.ID_idioma != Castellano && idioma.ID_idioma != Ingles && idioma.ID_idioma != Italiano)
+            if (idioma.IDIdioma != Castellano && idioma.IDIdioma != Ingles && idioma.IDIdioma != Italiano)
                 return ("<h1>Error, the language entered is not correct. English is used by default </h1>");
 
             return string.Empty;
@@ -88,13 +87,19 @@ namespace CodingChallenge.Data.Classes
 
         private static string ImprimirBody(List<FormaGeometrica> formas, Idioma idioma)
         {
+            Cuadrado ObjCuadrado = new Cuadrado(0, 0);
+            Circulo ObjCirculo = new Circulo(0, 0);
+            TrianguloEquilatero ObjTriangulo = new TrianguloEquilatero(0, 0);
+            Trapecio ObjTrapecio = new Trapecio(0, 0, 0, 0);
+            Rectangulo ObjRectangulo = new Rectangulo(0, 0, 0);
+
             var body = new StringBuilder();
 
-            body.Append(Cuadrado.ImprimirCalculo(formas, cuadrado, idioma));
-            body.Append(Circulo.ImprimirCalculo(formas, circulo, idioma));
-            body.Append(TrianguloEquilatero.ImprimirCalculo(formas, trianguloEquilatero, idioma));
-            body.Append(Trapecio.ImprimirCalculo(formas, trapecio, idioma));
-            body.Append(Rectangulo.ImprimirCalculo(formas, rectangulo, idioma));
+            body.Append(ObjCuadrado.ImprimirCalculo(formas, cuadrado, idioma));
+            body.Append(ObjCirculo.ImprimirCalculo(formas, circulo, idioma));
+            body.Append(ObjTriangulo.ImprimirCalculo(formas, trianguloEquilatero, idioma));
+            body.Append(ObjTrapecio.ImprimirCalculo(formas, trapecio, idioma));
+            body.Append(ObjRectangulo.ImprimirCalculo(formas, rectangulo, idioma));
 
             return body.ToString();
 

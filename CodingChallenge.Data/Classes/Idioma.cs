@@ -9,13 +9,27 @@ namespace CodingChallenge.Data.Classes
 {
    public class Idioma
     {
-        public String Name_idioma { get; set; }
-        public int ID_idioma { get; set; }
+        private string nameIdioma;
 
-        public Idioma(string Name_idioma, int ID_idioma)
+        public string NameIdioma
         {
-            this.Name_idioma = Name_idioma;
-            this.ID_idioma = ID_idioma;
+            get { return nameIdioma; }
+            set { nameIdioma = value; }
+        }
+
+        private int idIdioma;
+
+        public int IDIdioma
+        {
+            get { return idIdioma; }
+            set { idIdioma = value; }
+        }
+
+
+        public Idioma(string NameIdioma, int IDIdioma)
+        {
+            this.NameIdioma = NameIdioma;
+            this.IDIdioma = IDIdioma;
         }
 
     }

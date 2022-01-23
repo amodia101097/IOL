@@ -17,17 +17,12 @@ namespace CodingChallenge.Data.Classes
 
     public class Main
     {
-
-
-
         public static string Imprimir(List<FormaGeometrica> formas, Idioma idioma)
         {
 
             return Print.PrintMain(formas, idioma);
 
         }
-
-
 
     }
 }

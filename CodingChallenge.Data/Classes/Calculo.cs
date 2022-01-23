@@ -8,12 +8,38 @@ namespace CodingChallenge.Data.Classes
 {
     public class Calculo
     {
+        private int TotalCantidad;
 
-        public int totalCantidad { get; set; }
-        public decimal totalPerimetro { get; set; }
-        public decimal totalArea { get; set; }
+        public int totalCantidad
+        {
+            get { return TotalCantidad; }
+            set { TotalCantidad = value; }
+        }
 
-        public int totalError { get; set; }
+        private decimal TotalPerimetro;
+
+        public decimal totalPerimetro
+        {
+            get { return TotalPerimetro; }
+            set { TotalPerimetro = value; }
+        }
+
+        private decimal TotalArea;
+
+        public decimal totalArea
+        {
+            get { return TotalArea; }
+            set { TotalArea = value; }
+        }
+
+        private int TotalError;
+
+        public int totalError
+        {
+            get { return TotalError; }
+            set { TotalError = value; }
+        }
+
 
         public Calculo(int totalError)
         {
@@ -31,12 +57,17 @@ namespace CodingChallenge.Data.Classes
         public static Calculo Total(List<FormaGeometrica> formas)
         {
             Calculo Total = new Calculo(0, 0m, 0m);
+            Cuadrado ObjCuadrado = new Cuadrado(0, 0);
+            Circulo ObjCirculo = new Circulo(0, 0);
+            TrianguloEquilatero ObjTriangulo = new TrianguloEquilatero(0, 0);
+            Trapecio ObjTrapecio = new Trapecio(0, 0, 0, 0);
+            Rectangulo ObjRectangulo = new Rectangulo(0, 0, 0);
 
-            Calculo totalCuadrado = Cuadrado.ImprimirTotal(formas, Print.cuadrado);
-            Calculo totalCirculo = Circulo.ImprimirTotal(formas, Print.circulo);
-            Calculo totalTriangulo = TrianguloEquilatero.ImprimirTotal(formas, Print.trianguloEquilatero);
-            Calculo totalTrapecio = Trapecio.ImprimirTotal(formas, Print.trapecio);
-            Calculo totalRectangulo = Rectangulo.ImprimirTotal(formas, Print.rectangulo);
+            Calculo totalCuadrado = ObjCuadrado.ImprimirTotal(formas, Print.cuadrado);
+            Calculo totalCirculo = ObjCirculo.ImprimirTotal(formas, Print.circulo);
+            Calculo totalTriangulo = ObjTriangulo.ImprimirTotal(formas, Print.trianguloEquilatero);
+            Calculo totalTrapecio = ObjTrapecio.ImprimirTotal(formas, Print.trapecio);
+            Calculo totalRectangulo = ObjRectangulo.ImprimirTotal(formas, Print.rectangulo);
 
             Total.totalCantidad = totalCuadrado.totalCantidad + totalCirculo.totalCantidad + totalTriangulo.totalCantidad + totalTrapecio.totalCantidad + totalRectangulo.totalCantidad;
             Total.totalArea = totalCuadrado.totalArea + totalCirculo.totalArea + totalTriangulo.totalArea + totalTrapecio.totalArea + totalRectangulo.totalArea;
@@ -45,7 +76,7 @@ namespace CodingChallenge.Data.Classes
             return Total;
         }
 
-        public static Calculo TotalError(List<FormaGeometrica> formas)
+        public static Calculo TotalFormaError(List<FormaGeometrica> formas)
         {
             Calculo TotalError = new Calculo(0);
 
